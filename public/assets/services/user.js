@@ -3,7 +3,7 @@ function updateData() {
 }
 
 const loadUsers = () => {
-  const api = "/api/v1/users?sortBy=createdAt:desc";
+  const api = "/api/users";
   var table = $("#file-datatable").DataTable({
     processing: true,
     serverSide: true,
@@ -94,68 +94,6 @@ const loadUsers = () => {
       },
     },
   });
-};
-
-const createUser = () => {
-  try {
-    $("#btn-create-user").on("click", async () => {
-      const firstName = $("#first-name").val();
-      const lastName = $("#last-name").val();
-      const password = $("#password").val();
-      const email = $("#email").val();
-      const phone = $("#phone").val();
-      const username = $("#username").val();
-
-      const response = await fetch("/api/v1/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          phone,
-          password,
-          username,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.code == 201) {
-        updateData();
-        $("#close-1").click();
-        notif({
-          msg: "Tạo thành công",
-          position: "right",
-          bottom: "10",
-        });
-
-        return;
-      }
-
-      if (data.code == 400) {
-        notif({
-          msg: data.message,
-          type: "error",
-          position: "right",
-          zindex: 99999999,
-        });
-        return;
-      }
-
-      console.log(response);
-    });
-  } catch (error) {
-    console.log("error");
-    notif({
-      msg: error,
-      type: "error",
-      position: "right",
-      zindex: 99999999,
-    });
-  }
 };
 
 const lockUser = () => {

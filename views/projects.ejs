@@ -124,6 +124,16 @@
                                 <div class="g-2">
                                   <a
                                     id="<%= project.id %>"
+                                    class="btn text-danger btn-sm"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-original-title="View"
+                                    href="/projects/<%= project._id %>"
+                                  >
+                                    <span class="fe fe-navigation fs-14">
+                                    </span>
+                                  </a>
+                                  <a
+                                    id="<%= project.id %>"
                                     class="btn text-primary btn-sm"
                                     data-bs-toggle="tooltip"
                                     data-bs-original-title="Edit"

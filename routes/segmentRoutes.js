@@ -1,6 +1,12 @@
 const express = require("express");
+const authController = require("../controllers/authController");
 const segmentController = require("./../controllers/segmentController");
-const router = express.Router();
+
+const router = express.Router({
+  mergeParams: true,
+});
+
+router.use(authController.protect);
 
 router
   .route("/")

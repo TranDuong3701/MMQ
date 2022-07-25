@@ -2,18 +2,26 @@ const mongoose = require("mongoose");
 
 const documentSchema = new mongoose.Schema(
   {
-    name: String,
-    version: Number,
-    extension: String,
-    size: Number,
+    filename: String,
+    version: { type: Number, default: 1.0 },
+    size: {
+      type: Number,
+      default: 0,
+    },
+    progress: {
+      type: Number,
+      default: 0,
+    },
     path: String,
     translator: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      default: null,
     },
     reviewer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      default: null,
     },
     project: {
       type: mongoose.Schema.Types.ObjectId,
@@ -27,4 +35,4 @@ const documentSchema = new mongoose.Schema(
 
 const Document = mongoose.model("Document", documentSchema);
 
-module.export = Document;
+module.exports = Document;

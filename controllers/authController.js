@@ -95,7 +95,10 @@ module.exports = {
     }
 
     // 2) Verification token
-    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    const decoded = await promisify(jwt.verify)(
+      token,
+      process.env.JWT_PRIVATE_KEY
+    );
 
     // 3) Check if user still exists
     const currentUser = await User.findById(decoded.id);
@@ -128,6 +131,7 @@ module.exports = {
         const currentUser = await User.findById(decoded.id);
         if (!currentUser) return next();
 
+        req.user = currentUser;
         res.locals.user = currentUser;
         return next();
       } catch (err) {
