@@ -25,6 +25,6 @@ btnLogin.addEventListener("click", async (e) => {
   const data = await login(usernameElement.value, passwordElement.value);
 
   if (data.status === "success") {
-    location.href = "/admin";
+    location.href = "/";
   }
 });

@@ -26,6 +26,7 @@ module.exports = {
     });
   }),
   importDocument: catchAsync(async (req, res, next) => {
+    console.log(req.file);
     // TODO: Prepare XML
     const { path, originalname } = req.file;
     const [filename, ext] = originalname.split(".");

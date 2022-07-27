@@ -1,58 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <!-- META DATA -->
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="Sash – Bootstrap 5  Admin & Dashboard Template"
-    />
-    <meta name="author" content="Spruko Technologies Private Limited" />
-    <meta
-      name="keywords"
-      content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit."
-    />
-
-    <!-- FAVICON -->
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="/assets/images/brand/favicon.ico"
-    />
-
-    <!-- TITLE -->
-    <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
-
-    <!-- BOOTSTRAP CSS -->
-    <link
-      id="style"
-      href="/assets/plugins/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- STYLE CSS -->
-    <link href="/assets/css/style.css" rel="stylesheet" />
-    <link href="/assets/css/dark-style.css" rel="stylesheet" />
-    <link href="/assets/css/transparent-style.css" rel="stylesheet" />
-    <link href="/assets/css/skin-modes.css" rel="stylesheet" />
-
-    <!--- FONT-ICONS CSS -->
-    <link href="/assets/css/icons.css" rel="stylesheet" />
-
-    <!-- COLOR SKIN CSS -->
-    <link
-      id="theme"
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      href="/assets/colors/color1.css"
-    />
-  </head>
+  <%- include ("./common/head")%>
 
   <body class="app sidebar-mini ltr light-mode">
     <!-- GLOBAL-LOADER -->
@@ -67,10 +15,14 @@
         <!-- app-Header -->
         <%- include ("./common/header")%>
 
-        <!-- /app-Header -->
+        <!--APP-SIDEBAR-->
+        <%- include ("./common/sidebar")%>
 
         <!--APP-SIDEBAR-->
         <%- include ("./common/sidebar")%>
+
+        <!--APP-SIDEBAR-->
+        <%- include ("./components/segments/edit-segment")%>
 
         <!--app-content open-->
         <div class="main-content app-content mt-0">
@@ -98,7 +50,15 @@
                 <div class="col-12 col-sm-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title mb-0">Product Sales</h3>
+                      <div>
+                        <button
+                          class="btn btn-primary btn-block"
+                          data-bs-target="#import-document"
+                          data-bs-toggle="modal"
+                        >
+                          <i class="fe fe-download me-1"></i> Export Document
+                        </button>
+                      </div>
                     </div>
                     <div class="card-body pt-4">
                       <div class="grid-margin">
@@ -113,7 +73,7 @@
                                       href="#documents"
                                       class="active"
                                       data-bs-toggle="tab"
-                                      >All Documents</a
+                                      >Translation Segments</a
                                     >
                                   </li>
                                   <li>
@@ -132,14 +92,6 @@
                                       >Term Bases</a
                                     >
                                   </li>
-                                  <li>
-                                    <a
-                                      href="#tab7"
-                                      data-bs-toggle="tab"
-                                      class="text-dark"
-                                      >Members</a
-                                    >
-                                  </li>
                                 </ul>
                               </div>
                             </div>
@@ -150,7 +102,7 @@
                                 <div class="tab-pane active" id="documents">
                                   <div class="table-responsive">
                                     <table
-                                      id="data-table-documents"
+                                      id="data-table-segments"
                                       class="table table-bordered text-nowrap mb-0"
                                     >
                                       <thead class="border-top">
@@ -158,33 +110,12 @@
                                           <th
                                             class="bg-transparent border-bottom-0"
                                           >
-                                            Name
+                                            SOURCE
                                           </th>
                                           <th
                                             class="bg-transparent border-bottom-0"
                                           >
-                                            Version
-                                          </th>
-                                          <th
-                                            class="bg-transparent border-bottom-0"
-                                          >
-                                            Translator
-                                          </th>
-                                          <th
-                                            class="bg-transparent border-bottom-0"
-                                          >
-                                            Reviewer
-                                          </th>
-                                          <th
-                                            class="bg-transparent border-bottom-0"
-                                          >
-                                            Size
-                                          </th>
-                                          <th
-                                            class="bg-transparent border-bottom-0"
-                                            style="width: 10%"
-                                          >
-                                            Progress
+                                            STATUS
                                           </th>
                                           <th
                                             class="bg-transparent border-bottom-0"
@@ -3314,7 +3245,7 @@
     <!-- CUSTOM JS -->
     <script src="/assets/js/custom.js"></script>
 
-    <script src="/assets/services/segment.js"></script>
+    <script src="/assets/services/segments.js"></script>
     <script>
       const btnLogout = document.getElementById("btn-logout");
 

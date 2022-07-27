@@ -23,8 +23,7 @@ module.exports = {
     const project = await Project.findById(req.params.id);
     res.render("project.ejs", { project });
   }),
-
-  getSegments: catchAsync(async (req, res, next) => {
-    res.render("segments.ejs");
+  getDocument: catchAsync(async (req, res, next) => {
+    res.render("document.ejs");
   }),
 };

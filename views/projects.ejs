@@ -8,10 +8,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=0"
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="Sash – Bootstrap 5  Admin & Dashboard Template"
-    />
+    <meta name="description" content="MMQ" />
     <meta name="author" content="Spruko Technologies Private Limited" />
     <meta
       name="keywords"
@@ -26,7 +23,7 @@
     />
 
     <!-- TITLE -->
-    <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
+    <title>MMQ</title>
 
     <!-- BOOTSTRAP CSS -->
     <link
@@ -69,6 +66,10 @@
 
         <!--APP-SIDEBAR-->
         <%- include ("./common/sidebar")%>
+        <!--  -->
+        <%- include ("./components/projects/create-project")%>
+        <!--  -->
+        <%- include ("./components/projects/delete-project")%>
         <!-- /app-Header -->
 
         <!--app-content open-->
@@ -82,7 +83,7 @@
                 <div>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="/admin">Dashboard</a>
+                      <a href="/">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       Projects
@@ -95,13 +96,25 @@
               <div class="row row-sm">
                 <div class="col-lg-12">
                   <div class="card">
-                    <div class="card-header">
+                    <div
+                      class="card-header"
+                      style="display: flex; justify-content: space-between"
+                    >
                       <h3 class="card-title">File Export</h3>
+                      <div>
+                        <button
+                          class="btn btn-primary bg-primary mt-3"
+                          data-bs-toggle="modal"
+                          data-bs-target="#create-project-modal"
+                        >
+                          Add <i class="fe fe-plus me-2"></i>
+                        </button>
+                      </div>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
                         <table
-                          id="file-datatable"
+                          id="data-table-projects"
                           class="table table-bordered text-nowrap key-buttons border-bottom"
                         >
                           <thead>
@@ -113,44 +126,7 @@
                               <th class="border-bottom-0">Actions</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <% projects.forEach(project => { %>
-                            <tr>
-                              <td><%= project.name%></td>
-                              <td><%= project.sourceLanguageCode%></td>
-                              <td><%= project.targetLanguageCode%></td>
-                              <td><%= project.users %></td>
-                              <td>
-                                <div class="g-2">
-                                  <a
-                                    id="<%= project.id %>"
-                                    class="btn text-danger btn-sm"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-original-title="View"
-                                    href="/projects/<%= project._id %>"
-                                  >
-                                    <span class="fe fe-navigation fs-14">
-                                    </span>
-                                  </a>
-                                  <a
-                                    id="<%= project.id %>"
-                                    class="btn text-primary btn-sm"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-original-title="Edit"
-                                    ><span class="fe fe-edit fs-14"></span
-                                  ></a>
-                                  <a
-                                    id="<%= project.id %>"
-                                    class="btn text-danger btn-sm"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-original-title="Delete"
-                                    ><span class="fe fe-trash-2 fs-14"></span
-                                  ></a>
-                                </div>
-                              </td>
-                            </tr>
-                            <% }) %>
-                          </tbody>
+                          <tbody></tbody>
                         </table>
                       </div>
                     </div>
@@ -1167,5 +1143,7 @@
 
     <!-- CUSTOM JS -->
     <script src="../assets/js/custom.js"></script>
+
+    <script src="/assets/services/projects.js"></script>
   </body>
 </html>

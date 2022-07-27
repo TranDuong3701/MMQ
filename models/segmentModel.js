@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const segmentSchema = new mongoose.Schema(
   {
     source: String,
-    target: String,
+    target: {
+      type: String,
+      default: null,
+    },
     document: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "Document",

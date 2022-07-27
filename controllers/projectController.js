@@ -6,13 +6,14 @@ module.exports = {
     const projects = await Project.find({
       users: req.user._id,
     }).lean();
+
     res.status(200).json({
       status: "sucess",
       data: projects,
     });
   }),
   getProject: catchAsync(async (req, res, next) => {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(req.params.id).populate("users");
 
     res.status(200).json({
       status: "sucess",
@@ -30,14 +31,12 @@ module.exports = {
     });
   }),
   deleteProject: catchAsync(async (req, res, next) => {
-    await Project.find();
-
-    res.status(204).json({
+    await Project.findByIdAndDelete(req.params.id);
+    res.status(200).json({
       status: "success",
       data: null,
     });
   }),
-
   updateProject: catchAsync(async (req, res, next) => {
     const { users } = req.body;
     const project = await Project.findByIdAndUpdate(
